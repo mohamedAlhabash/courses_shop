@@ -17,17 +17,23 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Category</th>
                 <th>Created At</th>
                 <th>Actions</th>
             </tr>
-            @foreach ($categories as $category)
+            @foreach ($courses as $course)
                 <tr>
-                    <th>{{$category->id}}</th>
-                    <th>{{$category->name}}</th>
-                    <th>{{$category->created_at->format('Y - m - d')}}</th>
+                    <th>{{$course->id}}</th>
+                    <th>{{$course->name}}</th>
+                    <th>{{$course->price}}</th>
+                    <th><img width="100" src="{{asset('uploads/'.$course->image)}}"></th>
+                    <th>{{$course->category->name}}</th>
+                    <th>{{$course->created_at->format('Y - m - d')}}</th>
                     <th>
-                        <a class="btn btn-sm btn-primary" href="{{route('admin.categories.edit',$category->id)}}"><i class="fas fa-edit"></i></a>
-                        <form class="d-inline" action="{{route('admin.categories.destroy',$category->id)}}" method="POST">
+                        <a class="btn btn-sm btn-primary" href="{{route('admin.courses.edit',$course->id)}}"><i class="fas fa-edit"></i></a>
+                        <form class="d-inline" action="{{route('admin.courses.destroy',$course->id)}}" method="POST">
                             @method('delete')@csrf
                             <button onclick="return confirm('Are you sure!')" class="btn btn-sm btn-danger"><i class="fas fa-times">
                                 </i></button>
@@ -36,7 +42,7 @@
                 </tr>
             @endforeach
         </table>
-        {{ $categories->links() }}
+        {{ $courses->links() }}
       </div>
     </div>
 </div>
