@@ -81,28 +81,8 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        $course->validate([
-            'name'=>'required',
-            'price'=>'required',
-            'content'=>'required',
-            'image'=>'required|image',
-            'category_id'=>'required'
-        ]);
-
-
-        $ex = $course->file('image')->getClientOriginalExtension();
-        $new_image = 'courses_shop .' . time() . ' . ' . $ex;
-        $course->file('image')->move(public_path('uploads'),$new_image);
-
-        Course::create([
-            'name'=>$course->name,
-            'slug'=>Str::slug($course->name),
-            'price'=>$course->price,
-            'content'=>$course->content,
-            'image'=>$new_image,
-            'category_id'=>$course->category_id
-        ]);
-        return redirect(route('admin.courses.index'))->with('success','Courses Added')->with('alert','success');
+        $categories = Category::select(['id','name'])->get();
+        return view('admin.courses.edit',compact('course','categories'));
     }
 
     /**
@@ -114,7 +94,32 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+
+        $request->validate([
+            'name'=>'required',
+            'price'=>'required',
+            'content'=>'required',
+            // 'image'=>'nullable',
+            'category_id'=>'required'
+        ]);
+
+        $new_image = $course->image;
+
+        if($request->has('image')){
+            $ex = $request->file('image')->getClientOriginalExtension();
+            $new_image = 'courses_shop .' . time() . ' . ' . $ex;
+            $request->file('image')->move(public_path('uploads'),$new_image);
+        }
+
+        $course->update([
+            'name'=>$request->name,
+            'slug'=>Str::slug($request->name),
+            'price'=>$request->price,
+            'content'=>$request->content,
+            'image'=>$new_image,
+            'category_id'=>$request->category_id
+        ]);
+        return redirect(route('admin.courses.index'))->with('success','Courses Updated')->with('alert','warning');
     }
 
     /**
