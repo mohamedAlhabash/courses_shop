@@ -28,7 +28,7 @@
                     <th>{{$course->id}}</th>
                     <th>{{$course->name}}</th>
                     <th>{{$course->price}}</th>
-                    <th><img width="100" src="{{asset('uploads/'.$course->image)}}"></th>
+                    <th><img width="100" height="100" src="{{asset('uploads/'.$course->image)}}"></th>
                     <th>{{$course->category->name}}</th>
                     <th>{{$course->created_at->format('Y - m - d')}}</th>
                     <th>
