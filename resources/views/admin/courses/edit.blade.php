@@ -9,7 +9,7 @@
     @include('admin.error.error')
 <div class="row">
     <div class="col-12">
-        <form action="{{route('admin.courses.update',$course->id)}}" method ="POST">
+        <form action="{{route('admin.courses.update',$course->id)}}" method ="POST" enctype="multipart/form-data">
            @method('put') @csrf
            <div class="mb-3">
                 <input type="text" name="name" class="form-control" placeholder="Name" value="{{$course->name}}">
@@ -23,7 +23,7 @@
        </div>
 
        <div class="mb-3">
-            <label>Image</label>
+            {{-- <label>Image</label> --}}
             <input type="file" name="image" class="form-control">
             <img width="100" src="{{asset('uploads/'.$course->image)}}" alt="">
        </div>

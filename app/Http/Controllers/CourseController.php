@@ -81,7 +81,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        $categories = Category::select(['id','name'])->get();
+        $categories = Category::all();
         return view('admin.courses.edit',compact('course','categories'));
     }
 
@@ -99,7 +99,7 @@ class CourseController extends Controller
             'name'=>'required',
             'price'=>'required',
             'content'=>'required',
-            // 'image'=>'nullable',
+            'image' => 'nullable|image',
             'category_id'=>'required'
         ]);
 
