@@ -21,6 +21,7 @@ Route::prefix('courses_shop')->name('courses_shop.')->group(function(){
     Route::get('contact',[PageController::class,'contact'])->name('contactpage');
     Route::get('pay',[PageController::class,'pay'])->name('paypage');
     Route::get('register/{slug}',[PageController::class,'register'])->name('registerpage');
+    Route::post('register/{slug}',[PageController::class,'registerSubmet'])->name('registerSubmet');
 });
 
 

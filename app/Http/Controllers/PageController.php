@@ -21,7 +21,20 @@ class PageController extends Controller
     public function pay(){
         return view('frontend_views.pay');
     }
-    public function register(){
-        return view('frontend_views.register');
+    public function register($slug){
+        $course = Course::where('slug',$slug)->first();
+        return view('frontend_views.register',compact('course'));
+    }
+    public function registerSubmet(Request $request,$slug){
+       $request->validate([
+        'name'=>'required',
+        'email'=>'required',
+        'mobile'=>'required',
+        'gender'=>'required'
+       ]);
+
+       $course = Course::where('slug',$slug)->select('id')->first();
+       dd($course->id);
+
     }
 }

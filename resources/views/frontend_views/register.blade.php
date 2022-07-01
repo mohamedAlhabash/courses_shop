@@ -7,10 +7,10 @@
         <div class="row">
           <div class="col">
             <ol class="list-unstyled d-flex">
-              <li><a href="https://bakkah.com">Home</a></li>
-              <li class="mx-4">Register on Course Name</li>
+              <li><a href="{{route('courses_shop.homepage')}}">Home</a></li>
+              <li class="mx-4">Register on {{$course->name}}</li>
             </ol>
-            <h1>Register on Course Name</h1>
+            <h1>Register on {{$course->name}}</h1>
           </div>
         </div>
       </div>
@@ -19,56 +19,33 @@
     <section class="courses py-5">
       <div class="container">
         <h3 class="text-center mb-5">
-          Register on <span class="text-info">Course Name</span> with Price
-          <span class="text-danger">450$</span>
+          Register on <span class="text-info">{{$course->name}}</span> with Price
+          <span class="text-danger">{{$course->price}}$</span>
         </h3>
 
         <div class="row">
           <div class="col-md-8">
-            <form action="" method="post">
+            <form action="{{route('courses_shop.registerSubmet',$course->slug)}}" method="post">@csrf
               <div class="row">
                 <div class="col-md-6 mb-4">
                   <div class="form-group">
-                    <input
-                      type="text"
-                      name="name"
-                      value=""
-                      placeholder="Your Name *"
-                      class="form-control"
-                    />
+                    <input type="text" name="name" value="" placeholder="Your Name *" class="form-control" />
                   </div>
                 </div>
                 <div class="col-md-6 mb-4">
                   <div class="form-group">
-                    <input
-                      type="email"
-                      name="email"
-                      value=""
-                      placeholder="Your Email *"
-                      class="form-control"
-                    />
+                    <input type="email" name="email" value="" placeholder="Your Email *" class="form-control" />
                   </div>
                 </div>
                 <div class="col-md-6 mb-4">
                   <div class="form-group">
-                    <input
-                      type="tel"
-                      name="mobile"
-                      value=""
-                      placeholder="Your Mobile "
-                      class="form-control"
-                    />
+                    <input type="tel" name="mobile" value="" placeholder="Your Mobile " class="form-control" />
                   </div>
                 </div>
                 <div class="col-md-6 mb-4">
                   <div class="form-group">
-                    <input
-                      type="text"
-                      name="name"
-                      value=""
-                      placeholder="Subject"
-                      class="form-control"
-                    />
+                    <label><input type="radio" name="gender" value="male">Male</label>
+                    <label><input type="radio" name="gender" value="female">Female</label>
                   </div>
                 </div>
               </div>
@@ -89,14 +66,14 @@
                   <li>
                     <div class="d-flex justify-content-between">
                       <h5>Course Price</h5>
-                      <h5>450$</h5>
+                      <h5>{{$course->price}}</h5>
                     </div>
                   </li>
                 </ul>
                 <hr>
                 <div class="d-flex justify-content-between">
                   <h4 class="text-danger">Total</h4>
-                  <h4 class="text-danger">450$</h4>
+                  <h4 class="text-danger">{{$course->price}}$</h4>
                 </div>
               </div>
             </div>

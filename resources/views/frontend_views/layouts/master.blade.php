@@ -38,7 +38,7 @@
     @yield('content')
 
     <footer class="py-4 text-center bg-dark text-white">
-      <p class="m-0">All Copyright reserved to <a href="#">Mohammed Naji</a> <i class="far fa-copyright"></i> 2021</p>
+      <p class="m-0">All Copyright reserved to <a href="#">Mohammed Naji</a> <i class="far fa-copyright"></i> {{date('Y')}}</p>
     </footer>
 
     <script src="{{asset('frontend/js/bootstrap.bundle.min.js')}}"></script>
