@@ -15,6 +15,13 @@
         </div>
       </div>
     </section>
+    @include('admin.error.error')
+    {{-- @if (session('success'))
+    <div class="alert alert-{{session('alert')}} alert-dismissible fade show" role="alert">
+    {{session('success')}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif --}}
 
     <section class="courses py-5">
       <div class="container">

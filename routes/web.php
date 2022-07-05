@@ -19,7 +19,8 @@ Route::prefix('courses_shop')->name('courses_shop.')->group(function(){
     Route::get('',[PageController::class,'index'])->name('homepage');
     Route::get('course/{slug}',[PageController::class,'course'])->name('coursepage');
     Route::get('contact',[PageController::class,'contact'])->name('contactpage');
-    Route::get('pay',[PageController::class,'pay'])->name('paypage');
+    Route::get('pay/{id}',[PageController::class,'pay'])->name('paypage');
+    Route::get('thanks/{id}',[PageController::class,'thanks'])->name('thankspage');
     Route::get('register/{slug}',[PageController::class,'register'])->name('registerpage');
     Route::post('register/{slug}',[PageController::class,'registerSubmet'])->name('registerSubmet');
 });
