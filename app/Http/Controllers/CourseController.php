@@ -49,8 +49,9 @@ class CourseController extends Controller
 
         $ex = $request->file('image')->getClientOriginalExtension();
         $new_image = 'courses_shop .' . time() . ' . ' . $ex;
-        $request->file('image')->move(public_path('uploads'),$new_image);
-
+        $request->file('image')->move(public_path('uploads'),$new_image);//طريقة الصور هان انو احنا بنعمل اسم للملف في الببلك و بنضيف عليه الداتا الي هيا الصورة و بنرفع غب الداتا بيز مكان الصورة اسم الملف يعني احنا بعد ما نعمل اسم للملف بنعمل موف على المكان و بالتحديد لاسم الملف الي بنيته
+        //dd($request->file('image')->move(public_path('uploads'),$new_image))
+        // dd($new_image);
         Course::create([
             'name'=>$request->name,
             'slug'=>Str::slug($request->name),
